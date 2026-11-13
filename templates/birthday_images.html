@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cosmic Timeline | Cosmic Archive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo">✦ Cosmic Archive</a>
+    <div class="nav-links">
+        <a href="/">Explore</a>
+        <a href="/all_dates">Birthday Gallery</a>
+    </div>
+</nav>
+
+<main class="page-container">
+
+    <section class="gallery-heading">
+        <p class="eyebrow">Your Personal Cosmic Timeline</p>
+        <h1>A Year Among the Stars</h1>
+        <p class="subtitle">
+            Explore what the universe looked like on your birthday,
+            year after year.
+        </p>
+    </section>
+
+    <div class="image-gallery">
+        {% for image in images %}
+            <article class="image-card">
+                <h2>{{ image.date }}</h2>
+
+                <img
+                    src="{{ image.image }}"
+                    alt="NASA Astronomy Picture from {{ image.date }}"
+                    loading="lazy"
+                >
+            </article>
+        {% endfor %}
+    </div>
+
+</main>
+
+<footer>
+    A universe of wonder, one day at a time. ✦
+</footer>
+
+</body>
+</html>

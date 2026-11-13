@@ -1,0 +1,61 @@
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar">
+    <a href="/" class="logo">✦ Cosmic Archive</a>
+    <div class="nav-links">
+        <a href="/">Explore</a>
+        <a href="/all_dates">Birthday Gallery</a>
+    </div>
+</nav>
+
+<main class="page-container">
+
+    <section class="hero">
+        <p class="eyebrow">NASA Astronomy Picture of the Day</p>
+        <h1>Explore the Universe</h1>
+        <p class="subtitle">
+            Discover the cosmos, one day at a time.
+            Choose a date to explore NASA's image archive.
+        </p>
+    </section>
+
+    <section class="search-panel">
+        <form id="date-form" action="/search" method="GET">
+            <label for="date">Choose an APOD date</label>
+            <input type="date" id="date" name="date" required>
+            <button type="submit">Explore the Cosmos ✦</button>
+        </form>
+    </section>
+
+    <section class="result-section" id="result-section" hidden>
+        <h2 id="image-date"></h2>
+        <img id="apod-image" class="result-image"
+             src="" alt="NASA Astronomy Picture of the Day">
+    </section>
+
+</main>
+
+<footer>Somewhere in the universe, something wonderful is happening. ✦</footer>
+
+<script>
+    document.getElementById('date-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const date = document.getElementById('date').value;
+
+        fetch('/search?date=' + date)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('image-date').textContent = data.date;
+                document.getElementById('apod-image').src = data.image;
+                document.getElementById('result-section').hidden = false;
+            });
+    });
+</script>
+
+{% endblock %}

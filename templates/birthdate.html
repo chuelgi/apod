@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Gallery | Cosmic Archive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo">✦ Cosmic Archive</a>
+    <div class="nav-links">
+        <a href="/">Explore</a>
+        <a href="/all_dates">Birthday Gallery</a>
+    </div>
+</nav>
+
+<main class="page-container">
+
+    <section class="hero">
+        <p class="eyebrow">Your Personal Cosmic Timeline</p>
+
+        <h1>Discover Your Universe</h1>
+
+        <p class="subtitle">
+            Every birthday has a place in the universe.
+            Discover what NASA captured on your birthday throughout the years.
+        </p>
+    </section>
+
+    <section class="search-panel">
+        <form id="birthday-form" action="/all_dates" method="GET">
+
+            <label for="date">When were you born?</label>
+
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">✦ Explore My Universe</button>
+
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    Your story is written among the stars. ✦
+</footer>
+
+</body>
+</html>
