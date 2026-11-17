@@ -1,0 +1,31 @@
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar">
+    <a href="/" class="logo">✦ Cosmic Archive</a>
+    <div class="nav-links">
+        <a href="/">Explore</a>
+        <a href="/all_dates">Birthday Gallery</a>
+    </div>
+</nav>
+
+<main >
+
+    {% if images %}
+        <div class="result-section">
+                <h2> {{ images.date }}</h2>
+        <img class="result-image" src="{{ images.image }}">
+        </div>
+
+    {% endif %}
+
+</main>
+
+<footer>Somewhere in the universe, something wonderful is happening. ✦</footer>
+
+
+{% endblock %}

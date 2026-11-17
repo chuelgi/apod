@@ -1,0 +1,14 @@
+{% macro birthday_form(label_text="When were you born?", button_text="✦ Explore My Universe", action_url="/all_dates") %}
+<section class="search-panel">
+        <form id="birthday-form" action="{{ action_url }}" method="GET">
+
+            <label for="date"> {{ label_text }}</label>
+
+            <input type="date" id="date" name="date" min="1995-06-16" max="{{ max_date }}" required>
+            <p id="error-msg" style="color:red;" ></p>
+
+            <button type="submit">{{ button_text }}</button>
+
+        </form>
+    </section>
+{% endmacro %}

@@ -159,6 +159,31 @@ button:hover {
     box-shadow: 0 8px 22px rgba(174, 130, 225, 0.25);
 }
 
+.btn {
+    padding: 3% 5%;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #c9a9f1, #9b75d1);
+    color: #21172e;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+    text-decoration: none;
+    margin: 5%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(174, 130, 225, 0.25);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Single APOD result */
 
 .result-section {

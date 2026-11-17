@@ -20,42 +20,26 @@
         <h1>Explore the Universe</h1>
         <p class="subtitle">
             Discover the cosmos, one day at a time.
-            Choose a date to explore NASA's image archive.
+            Choose a date to explore NASA's image archive...
         </p>
     </section>
 
-    <section class="search-panel">
-        <form id="date-form" action="/search" method="GET">
-            <label for="date">Choose an APOD date</label>
-            <input type="date" id="date" name="date" required>
-            <button type="submit">Explore the Cosmos ✦</button>
-        </form>
-    </section>
+    {% from 'APOD_form.html' import birthday_form with context %}
+    {{ birthday_form(label_text="Enter Date", button_text="Explore the Cosmos ✦", action_url="/search") }}
 
-    <section class="result-section" id="result-section" hidden>
-        <h2 id="image-date"></h2>
-        <img id="apod-image" class="result-image"
-             src="" alt="NASA Astronomy Picture of the Day">
-    </section>
+    {% if image %}
+        <div class="image-gallery" style="padding-top: 10%">
+            <article class="image-card">
+                <h2> {{ image.date }}</h2>
+        <img src="{{ image.image }}">
+            </article>
+        </div>
+
+    {% endif %}
 
 </main>
 
 <footer>Somewhere in the universe, something wonderful is happening. ✦</footer>
 
-<script>
-    document.getElementById('date-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const date = document.getElementById('date').value;
-
-        fetch('/search?date=' + date)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('image-date').textContent = data.date;
-                document.getElementById('apod-image').src = data.image;
-                document.getElementById('result-section').hidden = false;
-            });
-    });
-</script>
 
 {% endblock %}

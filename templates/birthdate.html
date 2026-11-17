@@ -31,17 +31,12 @@
         </p>
     </section>
 
-    <section class="search-panel">
-        <form id="birthday-form" action="/all_dates" method="GET">
+    <!--
+        IMPORT FORM
+    -->
+    {% from 'APOD_form.html' import birthday_form %}
+    {{ birthday_form() }}
 
-            <label for="date">When were you born?</label>
-
-            <input type="date" id="date" name="date" required>
-
-            <button type="submit">✦ Explore My Universe</button>
-
-        </form>
-    </section>
 
 </main>
 
